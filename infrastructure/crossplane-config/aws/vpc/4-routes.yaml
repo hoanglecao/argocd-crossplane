@@ -1,0 +1,114 @@
+---
+apiVersion: ec2.aws.upbound.io/v1beta1
+kind: RouteTable
+metadata:
+  name: dev-private
+spec:
+  providerConfigRef:
+    name: aws-provider  # This line points to your specific ProviderConfig
+  forProvider:
+    region: us-east-1
+    tags:
+      Name: dev-private
+    vpcIdRef:
+      name: dev-main
+---
+apiVersion: ec2.aws.upbound.io/v1beta1
+kind: Route
+metadata:
+  name: dev-private
+spec:
+  providerConfigRef:
+    name: aws-provider  # This line points to your specific ProviderConfig
+  forProvider:
+    destinationCidrBlock: 0.0.0.0/0
+    natGatewayIdRef:
+      name: dev-nat
+    region: us-east-1
+    routeTableIdRef:
+      name: dev-private
+---
+apiVersion: ec2.aws.upbound.io/v1beta1
+kind: RouteTable
+metadata:
+  name: dev-public
+spec:
+  providerConfigRef:
+    name: aws-provider  # This line points to your specific ProviderConfig
+  forProvider:
+    region: us-east-1
+    tags:
+      Name: dev-public
+    vpcIdRef:
+      name: dev-main
+---
+apiVersion: ec2.aws.upbound.io/v1beta1
+kind: Route
+metadata:
+  name: dev-public
+spec:
+  providerConfigRef:
+    name: aws-provider  # This line points to your specific ProviderConfig
+  forProvider:
+    destinationCidrBlock: 0.0.0.0/0
+    gatewayIdRef:
+      name: dev-igw
+    region: us-east-1
+    routeTableIdRef:
+      name: dev-public
+---
+apiVersion: ec2.aws.upbound.io/v1beta1
+kind: RouteTableAssociation
+metadata:
+  name: dev-private-us-east-1a
+spec:
+  providerConfigRef:
+    name: aws-provider  # This line points to your specific ProviderConfig
+  forProvider:
+    region: us-east-1
+    routeTableIdRef:
+      name: dev-private
+    subnetIdRef:
+      name: dev-private-us-east-1a
+---
+apiVersion: ec2.aws.upbound.io/v1beta1
+kind: RouteTableAssociation
+metadata:
+  name: dev-private-us-east-1b
+spec:
+  providerConfigRef:
+    name: aws-provider  # This line points to your specific ProviderConfig
+  forProvider:
+    region: us-east-1
+    routeTableIdRef:
+      name: dev-private
+    subnetIdRef:
+      name: dev-private-us-east-1b
+---
+apiVersion: ec2.aws.upbound.io/v1beta1
+kind: RouteTableAssociation
+metadata:
+  name: dev-public-us-east-1a
+spec:
+  providerConfigRef:
+    name: aws-provider  # This line points to your specific ProviderConfig
+  forProvider:
+    region: us-east-1
+    routeTableIdRef:
+      name: dev-public
+    subnetIdRef:
+      name: dev-public-us-east-1a
+---
+apiVersion: ec2.aws.upbound.io/v1beta1
+kind: RouteTableAssociation
+metadata:
+  name: dev-public-us-east-1b
+spec:
+  providerConfigRef:
+    name: aws-provider  # This line points to your specific ProviderConfig
+  forProvider:
+    region: us-east-1
+    routeTableIdRef:
+      name: dev-public
+    subnetIdRef:
+      name: dev-public-us-east-1b

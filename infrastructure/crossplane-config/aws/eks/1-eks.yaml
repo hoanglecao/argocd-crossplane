@@ -1,0 +1,21 @@
+---
+apiVersion: eks.aws.upbound.io/v1beta1
+kind: Cluster
+metadata:
+  annotations:
+    uptest.upbound.io/timeout: "2400"
+  name: eks-created-by-crossplane
+spec:
+  providerConfigRef:
+    name: aws-provider
+  forProvider:
+    version: "1.27"
+    region: us-east-1
+    roleArnRef:
+      name: eks-ex-cluster-role
+    vpcConfig:
+      - endpointPrivateAccess: false
+        endpointPublicAccess: true
+        subnetIdRefs:
+          - name: dev-private-us-east-1a
+          - name: dev-private-us-east-1b

@@ -1,0 +1,40 @@
+
+---
+apiVersion: iam.aws.upbound.io/v1beta1
+kind: RolePolicyAttachment
+metadata:
+  name: dev-demo-eks-nodes-amazon-eks-worker-node-policy
+  annotations:
+    argocd.argoproj.io/sync-wave: "16"
+spec:
+  providerConfigRef:
+    name: aws-provider
+  forProvider:
+    role: ex-eks-nodes-role
+    policyArn: arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy
+---
+apiVersion: iam.aws.upbound.io/v1beta1
+kind: RolePolicyAttachment
+metadata:
+  name: dev-demo-eks-nodes-amazon-eks-cni-policy
+  annotations:
+    argocd.argoproj.io/sync-wave: "16"
+spec:
+  providerConfigRef:
+    name: aws-provider
+  forProvider:
+    role: ex-eks-nodes-role
+    policyArn: arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy
+---
+apiVersion: iam.aws.upbound.io/v1beta1
+kind: RolePolicyAttachment
+metadata:
+  name: dev-demo-eks-nodes-amazon-ec2-container-registry-read-only
+  annotations:
+    argocd.argoproj.io/sync-wave: "16"
+spec:
+  providerConfigRef:
+    name: aws-provider
+  forProvider:
+    role: ex-eks-nodes-role
+    policyArn: arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly

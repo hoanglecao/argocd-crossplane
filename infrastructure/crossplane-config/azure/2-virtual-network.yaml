@@ -1,0 +1,13 @@
+apiVersion: network.azure.upbound.io/v1beta1
+kind: VirtualNetwork
+metadata:
+  name: vn-crossplane
+spec:
+  providerConfigRef:
+    name: azure-provider
+  forProvider:
+    resourceGroupNameRef:
+      name: crossplane-rg
+    location: Central US
+    addressSpace:
+      - 10.2.0.0/16

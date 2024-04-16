@@ -1,0 +1,11 @@
+apiVersion: azure.upbound.io/v1beta1
+kind: ResourceGroup
+metadata:
+  name: crossplane-rg-2
+spec:
+  providerConfigRef:
+    name: azure-provider  # This line points to your specific ProviderConfig
+  forProvider:
+    location: Central US
+    tags:
+      provisioner: crossplane

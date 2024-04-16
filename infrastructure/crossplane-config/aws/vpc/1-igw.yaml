@@ -1,0 +1,14 @@
+---
+apiVersion: ec2.aws.upbound.io/v1beta1
+kind: InternetGateway
+metadata:
+  name: dev-igw
+spec:
+  providerConfigRef:
+    name: aws-provider  # This line points to your specific ProviderConfig
+  forProvider:
+    region: us-east-1
+    tags:
+      Name: dev-igw
+    vpcIdRef:
+      name: dev-main

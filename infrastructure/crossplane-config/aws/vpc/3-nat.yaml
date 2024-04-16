@@ -1,0 +1,31 @@
+---
+apiVersion: ec2.aws.upbound.io/v1beta1
+kind: EIP
+metadata:
+  name: dev-nat
+spec:
+  providerConfigRef:
+    name: aws-provider  # This line points to your specific ProviderConfig
+  forProvider:
+    region: us-east-1
+    vpc: true
+    tags:
+      Name: dev-nat
+---
+apiVersion: ec2.aws.upbound.io/v1beta1
+kind: NATGateway
+metadata:
+  name: dev-nat
+spec:
+  providerConfigRef:
+    name: aws-provider  # This line points to your specific ProviderConfig
+  forProvider:
+    region: us-east-1
+    connectivityType: public
+    allocationIdRef:
+      name: dev-nat
+    subnetIdSelector:
+      matchLabels:
+        name: dev-public-us-east-1a
+    tags:
+      Name: dev-nat
