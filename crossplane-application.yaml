@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: crossplane
+  namespace: argocd  # This is the namespace where Argo CD is deployed
+spec:
+  project: default
+  source:
+    repoURL: 'https://charts.crossplane.io/stable'
+    targetRevision: '1.14.5'  # Specify the version of Crossplane you wish to deploy
+    chart: crossplane
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: crossplane-system  # The namespace where Crossplane will be installed
+  syncPolicy:
+    automated:  # Automatically sync the application if new changes are detected
+      prune: true  # Enables deletion of resources that are no longer in the repository
+      selfHeal: true  # Enables self-healing to correct drifts from the desired state
+
+    syncOptions:
+    - CreateNamespace=true
