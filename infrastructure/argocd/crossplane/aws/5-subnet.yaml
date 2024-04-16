@@ -5,6 +5,7 @@ metadata:
   name: dev-private-us-east-1a
   annotations:
     argocd.argoproj.io/sync-wave: "5"
+    argocd.argoproj.io/sync-options: "SkipDryRunOnMissingResource=true"
   labels:
     name: dev-private-us-east-1a
 spec:
@@ -27,6 +28,7 @@ metadata:
   name: dev-private-us-east-1b
   annotations:
     argocd.argoproj.io/sync-wave: "5"
+    argocd.argoproj.io/sync-options: "SkipDryRunOnMissingResource=true"
   labels:
     name: dev-private-us-east-1b
 spec:
@@ -49,6 +51,7 @@ metadata:
   name: dev-public-us-east-1a
   annotations:
     argocd.argoproj.io/sync-wave: "5"
+    argocd.argoproj.io/sync-options: "SkipDryRunOnMissingResource=true"
   labels:
     name: dev-public-us-east-1a
 spec:
@@ -71,6 +74,7 @@ metadata:
   name: dev-public-us-east-1b
   annotations:
     argocd.argoproj.io/sync-wave: "5"
+    argocd.argoproj.io/sync-options: "SkipDryRunOnMissingResource=true"
   labels:
     name: dev-public-us-east-1b
 spec:

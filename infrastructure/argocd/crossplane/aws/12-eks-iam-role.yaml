@@ -5,6 +5,7 @@ metadata:
   name: eks-ex-cluster-role
   annotations:
     argocd.argoproj.io/sync-wave: "12"
+    argocd.argoproj.io/sync-options: "SkipDryRunOnMissingResource=true"
 spec:
   providerConfigRef:
     name: aws-provider
@@ -22,14 +23,3 @@ spec:
           }
         ]
       }
----
-apiVersion: iam.aws.upbound.io/v1beta1
-kind: RolePolicyAttachment
-metadata:
-  name: dev-eks-cluster-amazon-eks-cluster-policy
-spec:
-  providerConfigRef:
-    name: aws-provider
-  forProvider:
-    role: eks-ex-cluster-role
-    policyArn: arn:aws:iam::aws:policy/AmazonEKSClusterPolicy

@@ -14,7 +14,7 @@ spec:
   source:
     repoURL: https://github.com/hoanglecao/argocd-crossplane.git
     targetRevision: HEAD
-    path: ./infrastructure/argocd/test3
+    path: ./infrastructure/argocd/crossplane/aws
   destination:
     server: https://kubernetes.default.svc
     namespace: crossplane-system

@@ -5,6 +5,7 @@ metadata:
   name:  ex-eks-nodes-role
   annotations:
     argocd.argoproj.io/sync-wave: "15"
+    argocd.argoproj.io/sync-options: "SkipDryRunOnMissingResource=true"
 spec:
   providerConfigRef:
     name: aws-provider

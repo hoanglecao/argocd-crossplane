@@ -5,6 +5,7 @@ metadata:
   name: dev-eks-cluster-amazon-eks-cluster-policy
   annotations:
     argocd.argoproj.io/sync-wave: "13"
+    argocd.argoproj.io/sync-options: "SkipDryRunOnMissingResource=true"
 spec:
   providerConfigRef:
     name: aws-provider

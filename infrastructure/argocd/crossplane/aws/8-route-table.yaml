@@ -5,6 +5,7 @@ metadata:
   name: dev-private
   annotations:
     argocd.argoproj.io/sync-wave: "8"
+    argocd.argoproj.io/sync-options: "SkipDryRunOnMissingResource=true"
 spec:
   providerConfigRef:
     name: aws-provider  # This line points to your specific ProviderConfig
@@ -22,6 +23,7 @@ metadata:
   name: dev-public
   annotations:
     argocd.argoproj.io/sync-wave: "8"
+    argocd.argoproj.io/sync-options: "SkipDryRunOnMissingResource=true"
 spec:
   providerConfigRef:
     name: aws-provider  # This line points to your specific ProviderConfig

@@ -5,6 +5,7 @@ metadata:
   name: general
   annotations:
     argocd.argoproj.io/sync-wave: "17"
+    argocd.argoproj.io/sync-options: "SkipDryRunOnMissingResource=true"
 spec:
   providerConfigRef:
     name: aws-provider
@@ -32,6 +33,7 @@ metadata:
   name: spot
   annotations:
     argocd.argoproj.io/sync-wave: "17"
+    argocd.argoproj.io/sync-options: "SkipDryRunOnMissingResource=true"
 spec:
   providerConfigRef:
     name: aws-provider
