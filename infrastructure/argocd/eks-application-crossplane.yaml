@@ -1,5 +1,5 @@
 #
-# ArgoCD App of Apps used to deploy all Crossplane related resources to the management ckuster.
+# ArgoCD App of Apps used to create EKS on AWS 
 #
 ---
 apiVersion: argoproj.io/v1alpha1
@@ -12,9 +12,9 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: git@github.com:aws-samples/eks-gitops-crossplane-argocd.git
+    repoURL: https://github.com/hoanglecao/argocd-crossplane.git
     targetRevision: HEAD
-    path: crossplane-complete
+    path: ./infrastructure/argocd/test
   destination:
     server: https://kubernetes.default.svc
     namespace: crossplane-system
