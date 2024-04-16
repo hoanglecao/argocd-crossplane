@@ -1,0 +1,8 @@
+apiVersion: pkg.crossplane.io/v1
+kind: Provider
+metadata:
+  name: provider-aws-iam
+  annotations:
+    argocd.argoproj.io/sync-wave: "10"
+spec:
+  package: xpkg.upbound.io/upbound/provider-aws-iam:v1.3.1
