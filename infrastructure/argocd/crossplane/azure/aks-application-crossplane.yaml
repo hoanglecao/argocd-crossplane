@@ -1,0 +1,29 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: aks-provision-crossplane
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io   
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/hoanglecao/argocd-crossplane.git
+    targetRevision: HEAD
+    path: ./infrastructure/argocd/crossplane/azure
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: crossplane-system
+  syncPolicy:
+    automated:
+      prune: true    
+    syncOptions:
+    - CreateNamespace=true
+    - ApplyOutOfSyncOnly=true
+    retry:
+      limit: 10
+      backoff:
+        duration: 15s 
+        factor: 2 
+        maxDuration: 3m   

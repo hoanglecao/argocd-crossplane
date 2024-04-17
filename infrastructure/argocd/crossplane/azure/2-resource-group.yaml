@@ -1,0 +1,14 @@
+apiVersion: azure.upbound.io/v1beta1
+kind: ResourceGroup
+metadata:
+  name: crossplane-rg-2
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
+    argocd.argoproj.io/sync-options: "SkipDryRunOnMissingResource=true"
+spec:
+  providerConfigRef:
+    name: azure-provider  # This line points to your specific ProviderConfig
+  forProvider:
+    location: Central US
+    tags:
+      provisioner: crossplane
