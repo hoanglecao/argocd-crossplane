@@ -1,11 +1,8 @@
-#
-# ArgoCD App of Apps used to create EKS on AWS 
-#
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: crossplane-aws-eks 
+  name: eks-provision-crossplane
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io   
@@ -23,9 +20,10 @@ spec:
       prune: true    
     syncOptions:
     - CreateNamespace=true
+    - ApplyOutOfSyncOnly=true
     retry:
-      limit: 1
+      limit: 3
       backoff:
-        duration: 5s 
+        duration: 15s 
         factor: 2 
-        maxDuration: 1m   
+        maxDuration: 3m   
