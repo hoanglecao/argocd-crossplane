@@ -3,7 +3,7 @@ kind: ProviderConfig
 metadata:
   name: aws-provider
   annotations:
-    argocd.argoproj.io/sync-wave: "2"
+    argocd.argoproj.io/sync-wave: "1"
     argocd.argoproj.io/sync-options: "SkipDryRunOnMissingResource=true"
 spec:
   credentials:
@@ -12,3 +12,4 @@ spec:
       namespace: crossplane-system
       name: aws-secret
       key: creds
+      
