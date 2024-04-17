@@ -1,7 +1,7 @@
 apiVersion: azure.upbound.io/v1beta1
 kind: ResourceGroup
 metadata:
-  name: crossplane-rg-2
+  name: crossplane-rg-245
 spec:
   providerConfigRef:
     name: azure-provider  # This line points to your specific ProviderConfig

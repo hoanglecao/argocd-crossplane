@@ -10,7 +10,7 @@ spec:
     name: azure-provider
   forProvider:
     resourceGroupNameRef:
-      name: crossplane-rg
+      name: crossplane-rg-aks
     location: Central US
     addressSpace:
       - 10.2.0.0/16
