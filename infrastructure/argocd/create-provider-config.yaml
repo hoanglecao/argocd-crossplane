@@ -25,7 +25,7 @@ spec:
     - CreateNamespace=true
     - ApplyOutOfSyncOnly=true
     retry:
-      limit: 1
+      limit: 3
       backoff:
         duration: 15s 
         factor: 2 
