@@ -5,7 +5,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: crossplane-providerconfig
+  name: crossplane-test
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io   
@@ -14,7 +14,7 @@ spec:
   source:
     repoURL: https://github.com/hoanglecao/argocd-crossplane.git
     targetRevision: HEAD
-    path: ./infrastructure/argocd/test2
+    path: ./infrastructure/argocd/test3
   destination:
     server: https://kubernetes.default.svc
     namespace: crossplane-system
